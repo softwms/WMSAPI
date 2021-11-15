@@ -7,6 +7,8 @@ import putjson
 '''
 flask： web框架，通过flask提供的装饰器@server.route()将普通函数转换为服务
 登录接口，需要传url、username、passwd
+/       根目录，测试连通
+/postsku    SKU产品档案接入
 '''
 # 创建一个服务，把当前这个python文件当做一个服务
 app = Flask(__name__)
