@@ -15,6 +15,11 @@ app = Flask(__name__)
 @app.route('/', methods=['get', 'post'])
 def index():
     return "接口服务连通!"
+#入库单接口
+@app.route('/postasn', methods=['get', 'post'])
+#出库单接口
+@app.route('/postso', methods=['get', 'post'])
+#产品档案接口
 @app.route('/postsku', methods=['get', 'post'])
 def login():
     #客户列表，允许调用的客户
@@ -39,6 +44,8 @@ def login():
     else:
         resu = {'code': 999, 'message': '参数不完整请提供接口URL反馈IT'}
         return json.dumps(resu, ensure_ascii=False)
+
+
 # host="0.0.0.0" 代表谁都可以访问，可以加nginx处理
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=58080, debug=True,threaded=True)
