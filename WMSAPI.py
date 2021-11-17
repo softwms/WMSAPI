@@ -22,8 +22,9 @@ def index():
 #产品档案接口
 @app.route('/postsku', methods=['get', 'post'])
 def login():
+
     #获取访问URL分支，对应不同的数据处理逻辑
-    loc=request.url[request.url.rfind("/") + 1:request.url.find("?")]
+    loc=request.path[1:]  #postsku
     #客户列表，允许调用的客户
     userlist = ['XH']
     # 获取通过url请求传参的数据
@@ -35,7 +36,7 @@ def login():
     ##这里是业务，看你怎么写了，想写什么写什么
     # 判断用户名、密码都不为空，如果不传用户名、密码则username和pwd为None
     if userid is None or pwd is None:
-        resu = {'code': 998, 'message': '账号密码不能为空'}
+        resu = {'code': 998, 'message': '账号密码不能为空'+loc}
         return json.dumps(resu, ensure_ascii=False)
     if len(data)==0:
         resu = {'code': 999, 'message': ' POST data内空不能为空'}
