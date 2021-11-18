@@ -48,10 +48,10 @@ def login():
         resu = {'code': 999, 'message':'密钥不正确'}
         return json.dumps(resu, ensure_ascii=False)
 
-    data=data.replace('\r\n','')
     # 调用putjson写入数据库
-    putjson.postsku(loc,data)
-    resu ={'code': 000, 'message': str(data)} # 将字典转换为json串, json是字符串
+    putjson.postdata(loc,data)
+    print(data)
+    resu ={'code': '000', 'message': data} # 将字典转换为json串, json是字符串
     return json.dumps(resu, ensure_ascii=False)
 
 
